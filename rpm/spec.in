@@ -9,23 +9,31 @@ Release: %{release}%{?dist}
 License:	Apache
 URL:		https://github.com/gitbucket/gitbucket
 Group:		System/Servers
-Source0:	https://github.com/gitbucket/gitbucket/releases/download/#RPM_VERSION#/gitbucket.war
+Source0:	https://github.com/gitbucket/gitbucket/archive/refs/tags/#RPM_VERSION#.tar.gz
 Source1:	gitbucket.sysconfig
 Source2:	gitbucket.init
+Source3:  https://github.com/sbt/sbt/releases/download/v1.3.5/sbt-1.3.5.tgz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildArch:	noarch
-Requires:	java >= 1.8.0
+BuildRequires: java-11-devel
+Requires:	java-11
 
 
 %description
 
 GitBucket is the easily installable GitHub clone written with Scala.
 
+%prep
+%setup -b 3
+%setup -q
+
+%build
+sh ../sbt/bin/sbt package
 
 %install
 [ "%{buildroot}" != / ] && %{__rm} -rf "%{buildroot}"
 %{__mkdir_p} %{buildroot}{%{_sysconfdir}/{init.d,sysconfig},%{_datarootdir}/%{name}/lib,%{_sharedstatedir}/%{name},%{_localstatedir}/log/%{name}}
-%{__install} -m 0644 %{SOURCE0} %{buildroot}%{_datarootdir}/%{name}/lib
+%{__install} -m 0644 target/*/*.war %{buildroot}%{_datarootdir}/%{name}/lib/%{name}.war
 %{__install} -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 %{__install} -m 0755 %{SOURCE2} %{buildroot}%{_sysconfdir}/init.d/%{name}
 touch %{buildroot}%{_localstatedir}/log/%{name}/run.log
