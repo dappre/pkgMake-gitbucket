@@ -75,15 +75,15 @@ def releaseBranch = 'stable'
 // Initialize configuration
 lazyConfig(
 	name: 'pkgmake',
-	inLabels: [ /*'centos6',*/ 'centos7', /*'ubuntu16',*/ ],
+	inLabels: [ 'centos7', ],
 	env: 		[
-		VERSION: false,
-		RELEASE: false,
+		VERSION: '',
+		RELEASE: true,
 		DRYRUN: false,
 		TARGET_DIR: 'target',
 		GIT_CRED: 'bot-ci-dgm-rsa',
 		DEPLOY_USER: 'root',
-		DEPLOY_HOST: 'orion1.boxtel',
+		DEPLOY_HOST: 'pkg.in.dolden.net',
 		DEPLOY_DIR: '/var/mrepo',
 		DEPLOY_REPO: 'local',
 		DEPLOY_CRED: 'bot-ci-dgm-rsa',

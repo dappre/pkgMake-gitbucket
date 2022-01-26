@@ -36,7 +36,7 @@
 - Group support in the Gist Plugin
 - Allow redirection to the Release Page from the Activity Timeline Page
 
-* Thu Sep 29 2018 Digital-Me Infra Team <infra@digital-me.nl> - 4.29.0-1
+* Sat Sep 29 2018 Digital-Me Infra Team <infra@digital-me.nl> - 4.29.0-1
 - Official Docker image has been available
 - Enhance file edit and delete buttons of the repository viewer
 - Fix Patch button to generate patches for all files in the commit
