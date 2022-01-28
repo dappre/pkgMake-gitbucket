@@ -1,3 +1,31 @@
+* Sun Jan 16 2022 Digital-Me Infra Team <infra@digital-me.nl> - 4.37.2-1
+- Security fix
+
+* Mon Dec 13 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.37.1-1
+- Update gist-plugin and notification-plugin
+- Fix SSHCommand extension point for apache-sshd 2.x
+
+* Sat Dec 11 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.37.0-1
+- Enhance Git Reference APIs
+- Add milestone data to issue list API
+- Support "all" in issue list API
+- Support EDDSA in signed commit verification
+- Support custom SSH url
+- Relax max passward length limitation
+- Relax max webhook url length limitation
+
+* Sun Aug 15 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.36.2-1
+- Escape user name in avatar image tag
+
+* Thu Jul 22 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.36.1-1
+- Bump gitbucket-gist-plugin to 4.21.0
+
+* Sat Jul 17 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.36.0-1
+- Tag selector in the repository viewer
+- Link issues/pull requests of other repositories
+- Files and lines can be linked in the diff view
+- Option to disable XSS protection
+
 * Thu Jan 14 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.3-1
 - Fix a bug that Wiki page cannot be deleted
 - Fix a deployment issue on Tomcat
@@ -10,7 +38,6 @@
 - Fix database migration issue which happens if webhook is configured
 - Call push webhook when pull request is merged
 - Show commit status at commits tab of pull request
-
 
 * Fri Dec 25 2020 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.0-1
 - Editor and source viewer color theme
