@@ -1,10 +1,42 @@
-* Tue Dec 31 2019 Digital-Me Infra Team <infra@digital-me.nl> - 4.33.0-0.1
+* Thu Jan 14 2021 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.3-1
+- Fix a bug that Wiki page cannot be deleted
+- Fix a deployment issue on Tomcat
+
+* Tue Dec 29 2020 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.2-1
+- Upgrade gitbucket-notifications-plugin to 1.10.0
+- Upgrade oauth2-oidc-sdk to 8.29.1 to solve dependency issue
+
+* Mon Dec 28 2020 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.1-1
+- Fix database migration issue which happens if webhook is configured
+- Call push webhook when pull request is merged
+- Show commit status at commits tab of pull request
+
+
+* Fri Dec 25 2020 Digital-Me Infra Team <infra@digital-me.nl> - 4.35.0-1
+- Editor and source viewer color theme
+- Auto completion for issues and pull requests
+- Upload image from clipboard
+- Close multiple issues by commit comment
+- Create pull request from online editor
+- Milestone overview
+- Commit status at various places
+- WebAPI coverage improvements
+
+* Sat Jul 25 2020 Digital-Me Infra Team <infra@digital-me.nl> - 4.34.0-1
+- Enhancement admin settings UI
+- Improve MariaDB support
+- Improve activity logging
+- CLI option to persist session on disk in the standalone mode
+- Web API updates
+- Bundled plugins updates
+
+* Tue Dec 31 2019 Digital-Me Infra Team <infra@digital-me.nl> - 4.33.0-1
 - All CLI options are configurable by environment variables
 - Folding pull request files
 - WebHook security options
 - Add assignee and assignees properties to some Web APIs' response
 
-* Wed Aug 7 2019 Digital-Me Infra Team <infra@digital-me.nl> - 4.32.0-0.1
+* Wed Aug 7 2019 Digital-Me Infra Team <infra@digital-me.nl> - 4.32.0-1
 - Bump to Scala 2.13.0 and Scalatra 2.7.0
 - Draft pull request
 - Drop network installation of plugins

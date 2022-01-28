@@ -98,26 +98,12 @@ lazyStage {
 	name = 'validate'
 	onlyif = ( lazyConfig['branch'] != releaseBranch ) // Skip when releasing
 	tasks = [
-		pre: {
-			def version = gitLastTag()
-			if (env.VERSION.toString() != 'true' && env.VERSION.toString() != 'false') {
-				version = env.VERSION.toString()
-			}
-			def release = '1'
-			if (version ==~ /.+-.+/) {
-				release = version.split('-')[1]
-				version = version - ~/-.+$/
-			}
-			currentBuild.displayName = "#${env.BUILD_NUMBER} ${version}-${release}"
-		},
 		run: {
-			def version = gitLastTag()
-			if (env.VERSION.toString() != 'true' && env.VERSION.toString() != 'false') {
-				version = env.VERSION.toString()
-			}
-			if (version ==~ /.+-.+/) {
-				version = version - ~/-.+$/
-			}
+			// Use version for environment or read it from changelog
+			def version = (env.VERSION.toString() ==~ /[.0-9]+(-[0-9]+)?/) ? env.VERSION : rpmVersion()
+			def release = (version ==~ /.+-.+/) ? version.split('-')[1] : '1'
+			version = version - ~/-\d+/
+			currentBuild.displayName = "#${env.BUILD_NUMBER} ${version}-${release}"
 			sh("make check VERSION=${version}")
 		},
 		in: '*', on: 'docker'
@@ -130,15 +116,10 @@ lazyStage {
 	onlyif = ( lazyConfig['branch'] != releaseBranch ) // Skip when releasing
 	tasks = [
 		run: {
-			def version = gitLastTag()
-			if (env.VERSION.toString() != 'true' && env.VERSION.toString() != 'false') {
-				version = env.VERSION.toString()
-			}
-			def release = '1'
-			if (version ==~ /.+-.+/) {
-				release = version.split('-')[1]
-				version = version - ~/-.+$/
-			}
+			// Use version for environment or read it from changelog
+			def version = (env.VERSION.toString() ==~ /[.0-9]+(-[0-9]+)?/) ? env.VERSION : rpmVersion()
+			def release = (version ==~ /.+-.+/) ? version.split('-')[1] : '1'
+			version = version - ~/-\d+/
 			sh(
 """
 DIST="\${LAZY_LABEL}-\$(arch)"
@@ -168,15 +149,10 @@ lazyStage {
 	onlyif = ( lazyConfig['branch'] == releaseBranch )
 	tasks = [
 		run: {
-			def version = gitLastTag()
-			if (env.VERSION.toString() != 'true' && env.VERSION.toString() != 'false') {
-				version = env.VERSION.toString()
-			}
-			def release = '1'
-			if (version ==~ /.+-.+/) {
-				release = version.split('-')[1]
-				version = version - ~/-.+$/
-			}
+			// Use version for environment or read it from changelog
+			def version = (env.VERSION.toString() ==~ /[.0-9]+(-[0-9]+)?/) ? env.VERSION : rpmVersion()
+			def release = (version ==~ /.+-.+/) ? version.split('-')[1] : '1'
+			version = version - ~/-\d+/
 			currentBuild.displayName = "#${env.BUILD_NUMBER} ${version}-${release}"
 			sh(
 """
